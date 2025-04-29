@@ -2,10 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Visor 3D</title>
+  <title>Visor 3D con fondo personalizable</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
-    body { margin: 0; background: #000; }
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    #colorPicker {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+      padding: 5px;
+    }
+
     model-viewer {
       width: 100vw;
       height: 100vh;
@@ -13,6 +30,11 @@
   </style>
 </head>
 <body>
+
+  <!-- Selector de color -->
+  <input type="color" id="colorPicker" title="Selecciona un color de fondo">
+
+  <!-- Visor del modelo 3D -->
   <model-viewer 
     src="modelo.glb"
     alt="Mi modelo"
@@ -22,7 +44,17 @@
     ar-modes="webxr scene-viewer quick-look"
     shadow-intensity="1"
     exposure="1"
-    environment-image="neutral">
+    environment-image="neutral"
+    style="--material-color: red;">
   </model-viewer>
+
+  <!-- Script para cambiar el fondo dinámicamente -->
+  <script>
+    const colorPicker = document.getElementById('colorPicker');
+    colorPicker.addEventListener('input', (event) => {
+      document.body.style.background = event.target.value;
+    });
+  </script>
+
 </body>
 </html>
