@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Visor 3D</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; }
+    model-viewer {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <model-viewer 
+    src="modelo.glb"
+    alt="Mi modelo"
+    auto-rotate 
+    camera-controls 
+    ar 
+    ar-modes="webxr scene-viewer quick-look"
+    shadow-intensity="1"
+    exposure="1"
+    environment-image="neutral">
+  </model-viewer>
+</body>
+</html>
